@@ -40,22 +40,36 @@ export class PracticeRecorder {
     return this.stream;
   }
 
-  async start(): Promise<void> {
+  async start(existing?: MediaStream | null): Promise<void> {
     if (this.recorder?.state === "recording") return;
 
-    this.stream = await openFrontCameraStream();
+    const reusable =
+      existing && existing.getTracks().some((track) => track.readyState === "live")
+        ? existing
+        : null;
+    this.stream = reusable ?? (await openFrontCameraStream());
     this.chunks = [];
 
     const mimeType = pickRecorderMimeType();
-    this.recorder = mimeType
+    this.recorder = this.createRecorder(mimeType);
+
+    try {
+      this.recorder.start(1000);
+    } catch {
+      this.recorder = this.createRecorder();
+      this.recorder.start(1000);
+    }
+  }
+
+  private createRecorder(mimeType?: string): MediaRecorder {
+    if (!this.stream) throw new Error("Camera is not open");
+    const recorder = mimeType
       ? new MediaRecorder(this.stream, { mimeType })
       : new MediaRecorder(this.stream);
-
-    this.recorder.ondataavailable = (e) => {
+    recorder.ondataavailable = (e) => {
       if (e.data.size > 0) this.chunks.push(e.data);
     };
-
-    this.recorder.start(1000);
+    return recorder;
   }
 
   stop(): Promise<{ blob: Blob; mimeType: string }> {

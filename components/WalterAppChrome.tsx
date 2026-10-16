@@ -38,7 +38,7 @@ export function WalterAppChrome({ children }: { children: React.ReactNode }) {
             }`}
             aria-current={practiceActive ? "page" : undefined}
           >
-            🎸 Practice
+            🎹 Practice
           </Link>
           <Link
             href="/teacher"
