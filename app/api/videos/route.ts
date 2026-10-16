@@ -73,7 +73,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         error:
-          "Upload failed. In Vercel → Storage → Blob, connect the store to walter, then Redeploy.",
+          "Upload failed. In Vercel → Storage → Blob, connect the store to stomple, then Redeploy.",
       },
       { status: 503 },
     );

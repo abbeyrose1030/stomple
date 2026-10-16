@@ -43,7 +43,7 @@ export function TeacherDashboard({ initialKey = "" }: Props) {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const saved = sessionStorage.getItem("walter-teacher-key");
+      const saved = sessionStorage.getItem("stomple-teacher-key");
       if (saved) setStoredKey(saved);
     }
   }, []);
@@ -70,7 +70,7 @@ export function TeacherDashboard({ initialKey = "" }: Props) {
         setStatus(data.error || "Could not sign in. Refresh and try again.");
         return;
       }
-      sessionStorage.setItem("walter-teacher-key", key);
+      sessionStorage.setItem("stomple-teacher-key", key);
       setStoredKey(key);
     } catch {
       setStatus("Could not check password. Try again.");
@@ -78,7 +78,7 @@ export function TeacherDashboard({ initialKey = "" }: Props) {
   };
 
   const signOut = () => {
-    sessionStorage.removeItem("walter-teacher-key");
+    sessionStorage.removeItem("stomple-teacher-key");
     setStoredKey("");
     setVideos([]);
     setKey("");

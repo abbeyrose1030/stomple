@@ -36,7 +36,7 @@ export function createPresignedUploadHandler(options: Options) {
       return NextResponse.json(
         {
           error:
-            "Blob webhook key missing. Reconnect Blob storage to walter on Vercel, then redeploy.",
+            "Blob webhook key missing. Reconnect Blob storage to stomple on Vercel, then redeploy.",
         },
         { status: 503 },
       );

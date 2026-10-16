@@ -1,6 +1,6 @@
-# WALTER
+# STOMPLE
 
-Bright, simple practice app for Ava: play backing tracks, record front-camera video with **mic audio** (guitar), and upload for her teacher to review.
+Bright, simple practice app for EVA: play backing tracks, record front-camera video with **mic audio** (guitar), and upload for her teacher to review.
 
 ## Stack
 
@@ -24,14 +24,14 @@ cp .env.example .env.local
 npm run dev
 ```
 
-- Ava: [http://localhost:3000](http://localhost:3000)
+- EVA: [http://localhost:3000](http://localhost:3000)
 - Abbey: [http://localhost:3000/teacher](http://localhost:3000/teacher)
 
-## iPad (Ava)
+## iPad (EVA)
 
 1. Open the deployed site in **Safari**.
-2. **Share → Add to Home Screen** (“WALTER”).
-3. Open WALTER from the home screen (standalone mode helps camera + audio).
+2. **Share → Add to Home Screen** (“STOMPLE”).
+3. Open STOMPLE from the home screen (standalone mode helps camera + audio).
 4. Allow **Camera** and **Microphone** when prompted.
 
 ### Audio notes
@@ -67,4 +67,4 @@ Each student should get their **own folder**, **GitHub repo**, **Vercel project*
 
 4. In the new folder: `git init`, new GitHub repo, push, import to Vercel, add **Blob**, deploy.
 
-5. Upload that student’s tracks from the **Abbey** tab. Ava’s app is unchanged.
+5. Upload that student’s tracks from the **Abbey** tab. EVA’s app is unchanged.

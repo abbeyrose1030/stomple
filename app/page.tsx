@@ -14,7 +14,7 @@ export default async function HomePage() {
           {APP_NAME}
         </p>
         <p className="mt-2 text-lg font-medium">
-          Hey {STUDENT_NAME}! 👋 Pick a song to practice.
+          Hey {STUDENT_NAME}! 👋 Ready to practice?
         </p>
       </div>
 
