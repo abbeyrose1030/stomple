@@ -32,22 +32,16 @@ export function createPresignedUploadHandler(options: Options) {
       );
     }
 
-    if (!process.env.BLOB_WEBHOOK_PUBLIC_KEY?.trim()) {
-      return NextResponse.json(
-        {
-          error:
-            "Blob webhook key missing. Reconnect Blob storage to stomple on Vercel, then redeploy.",
-        },
-        { status: 503 },
-      );
-    }
-
     const body = (await request.json()) as HandleUploadPresignedBody;
 
     try {
       const jsonResponse = await handleUploadPresigned({
         body,
         request,
+        // URL generation does not verify this key. Callbacks do, and this app
+        // registers the video itself after the browser upload finishes.
+        webhookPublicKey:
+          process.env.BLOB_WEBHOOK_PUBLIC_KEY?.trim() || "unconfigured",
         getSignedToken: async (pathname, clientPayload, multipart) => {
           const ctx: PresignedUploadContext = {
             pathname,
